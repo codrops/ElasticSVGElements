@@ -105,19 +105,15 @@
 					if( this.isOpen ) {
 						classie.remove( self.el, 'menu--anim' );
 						setTimeout( function() { classie.remove( self.el, 'menu--open' );	}, 250 );
-						
-						this.pathEl.stop().animate( { 'path' : this.paths.close }, 350, mina.easeout, function() {
-							self.pathEl.stop().animate( { 'path' : self.paths.reset }, 800, mina.elastic );
-						} );
 					}
 					else {
 						classie.add( self.el, 'menu--anim' );
 						setTimeout( function() { classie.add( self.el, 'menu--open' );	}, 250 );
-						
-						this.pathEl.stop().animate( { 'path' : this.paths.open }, 350, mina.easeout, function() {
-							self.pathEl.stop().animate( { 'path' : self.paths.reset }, 800, mina.elastic );
-						} );
 					}
+					this.pathEl.stop().animate( { 'path' : this.isOpen ? this.paths.close : this.paths.open }, 350, mina.easeout, function() {
+						self.pathEl.stop().animate( { 'path' : self.paths.reset }, 800, mina.elastic );
+					} );
+					
 					this.isOpen = !this.isOpen;
 				};
 
