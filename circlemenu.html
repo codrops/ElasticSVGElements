@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elastic SVG Elements | Circular Menu</title>
+		<meta name="description" content="Adding elasticity with SVG shape animations" />
+		<meta name="keywords" content="svg, morph, snap.svg, effect, animation, css, shape" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/circlemenu.css" />
+		<script src="js/snap.svg-min.js"></script>
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="theme-9">
+		<div class="container">
+			<div class="main">
+				<header class="codrops-header">
+					<h1>Elastic SVG Elements <span>Adding elasticity with SVG shape animations</span></h1>
+					<div class="codrops-links">
+						<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/DialogEffects/" title="Previous Demo"><span>Previous Demo</span></a> / 
+						<a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21555" title="Back to the article"><span>Back to the Codrops Article</span></a>
+					</div>
+					<nav class="codrops-demos">
+						<a href="index.html">Sidebar Menu</a>
+						<a href="pullupmenu.html">Pull-Up Menu</a>
+						<a href="dropdown.html">Drop-down Menu</a>
+						<a href="drag.html">Drag &amp; Drop</a>
+						<a href="collapseexpand.html">Collapse &amp; Expand</a>
+						<a href="hamburger.html">Menu Icon</a>
+						<a class="current-demo" href="circlemenu.html">Circular Menu</a>
+						<a href="inputs.html">Inputs</a>
+						<a href="button.html">Buttons</a>
+					</nav>
+				</header>
+				<nav id="menu" class="menu">
+					<span class="morph-shape" data-morph-active="M251,150c0,93.5-29.203,143-101,143S49,243.5,49,150C49,52.5,78.203,7,150,7S251,51.5,251,150z">
+						<svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="none">
+							<path d="M281,150c0,71.797-59.203,131-131,131S19,221.797,19,150S78.203,19,150,19S281,78.203,281,150z"/>
+						</svg>
+					</span>
+					<button class="trigger"><i class="fa fa-fw fa-share"></i><span>Share This</span></button>
+					<ul class="menu__items">
+						<li><a href="https://www.facebook.com/pages/Codrops/159107397912"><i class="fa fa-fw fa-facebook"></i><span>Codrops on Facebook</span></a></li>
+						<li><a href="http://feeds2.feedburner.com/tympanus"><i class="fa fa-fw fa-rss"></i><span>Codrops RSS Feed</span></a></li>
+						<li><a href="http://www.twitter.com/codrops"><i class="fa fa-fw fa-twitter"></i><span>Codrops on Twitter</span></a></li>
+						<li><a href="https://plus.google.com/101095823814290637419"><i class="fa fa-fw fa-google-plus"></i><span>Codrops on Google+</span></a></li>
+						<li><a href="https://github.com/codrops"><i class="fa fa-fw fa-github"></i><span>Codrops on GitHub</span></a></li>
+						<li><a href="http://www.pinterest.com/codrops/codrops/"><i class="fa fa-fw fa-pinterest"></i><span>Codrops on Pinterest</span></a></li>
+						<li><a href="https://www.tumblr.com/tagged/codrops"><i class="fa fa-fw fa-tumblr"></i><span>Codrops on Tumblr</span></a></li>
+						<li><a href="http://feedburner.google.com/fb/a/mailverify?uri=tympanus&loc=en_US"><i class="fa fa-fw fa-envelope"></i><span>Codrops RSS as Mail</span></a></li>
+					</ul>
+				</nav>
+				<!-- Related demos -->
+				<section class="related">
+					<p>If you enjoyed this demo you might also like:</p>
+					<a href="http://tympanus.net/Development/WobblySlideshowEffect/">
+						<img src="img/related/WobblySlideshowEffect.png" />
+						<h3>Wobbly Slideshow Effect</h3>
+					</a>
+					<a href="http://tympanus.net/Tutorials/ShapeHoverEffectSVG/">
+						<img src="img/related/ShapeHoverEffect.png" />
+						<h3>Shape Hover Effect</h3>
+					</a>
+				</section>
+			</div><!-- /main -->
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script>
+			(function() {
+
+				function SVGMenu( el, options ) {
+					this.el = el;
+					this.init();
+				}
+
+				SVGMenu.prototype.init = function() {
+					this.trigger = this.el.querySelector( 'button.trigger' );
+					this.shapeEl = this.el.querySelector( 'span.morph-shape' );
+
+					var s = Snap( this.shapeEl.querySelector( 'svg' ) );
+					this.pathEl = s.select( 'path' );
+					this.paths = {
+						reset : this.pathEl.attr( 'd' ),
+						active : this.shapeEl.getAttribute( 'data-morph-active' )
+					};
+
+					this.isOpen = false;
+
+					this.initEvents();
+				};
+
+				SVGMenu.prototype.initEvents = function() {
+					this.trigger.addEventListener( 'click', this.toggle.bind(this) );
+				};
+
+				SVGMenu.prototype.toggle = function() {
+					var self = this;
+
+					if( this.isOpen ) {
+						classie.remove( this.el, 'menu--open' );
+					}
+					else {
+						setTimeout( function() { classie.add( self.el, 'menu--open' ); }, 175 );
+					}
+					
+					this.pathEl.stop().animate( { 'path' : this.paths.active }, 150, mina.easein, function() {
+						self.pathEl.stop().animate( { 'path' : self.paths.reset }, 800, mina.elastic );
+					} );
+
+					this.isOpen = !this.isOpen;
+				};
+
+				new SVGMenu( document.getElementById( 'menu' ) );
+
+			})();
+		</script>
+	</body>
+</html>

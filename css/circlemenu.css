@@ -1,0 +1,152 @@
+.menu {
+	position: relative;
+	display: inline-block;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: pointer;
+	margin: 7em 0;
+}
+
+.trigger {
+	background: none;
+	width: 100px;
+	height: 100px;
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+	text-align: center;
+	font-size: 1.5em;
+	color: #fff;
+	position: relative;
+	z-index: 1000;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+.trigger span {
+	opacity: 0;
+	position: absolute;
+}
+
+.menu__items {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	z-index: 5;
+}
+
+.menu__items li {
+	width: 80%;
+	height: 80%;
+	top: 10%;
+	left: 10%;
+	line-height: 80px;
+	font-size: 1.5em;
+	position: absolute;
+	z-index: -1;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	-webkit-transform: scale3d(0.5, 0.5, 1);
+	transform: scale3d(0.5, 0.5, 1);
+	-webkit-transition: -webkit-transform 0.25s ease-out;
+	transition: transform 0.25s ease-out;
+}
+
+.menu.menu--open .menu__items li:first-child {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(0, -160px, 0);
+	transform: scale3d(1, 1, 1) translate3d(0, -160px, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(2) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(113.14px, -113.14px, 0);
+	transform: scale3d(1, 1, 1) translate3d(113.14px, -113.14px, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(3) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(160px, 0, 0);
+	transform: scale3d(1, 1, 1) translate3d(160px, 0, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(4) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(113.14px, 113.14px, 0);
+	transform: scale3d(1, 1, 1) translate3d(113.14px, 113.14px, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(5) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(0, 160px, 0);
+	transform: scale3d(1, 1, 1) translate3d(0, 160px, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(6) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(-113.14px, 113.14px, 0);
+	transform: scale3d(1, 1, 1) translate3d(-113.14px, 113.14px, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(7) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(-160px, 0, 0);
+	transform: scale3d(1, 1, 1) translate3d(-160px, 0, 0);
+}
+
+.menu.menu--open .menu__items li:nth-child(8) {
+	-webkit-transform: scale3d(1, 1, 1) translate3d(-113.14px, -113.14px, 0);
+	transform: scale3d(1, 1, 1) translate3d(-113.14px, -113.14px, 0);
+}
+
+.menu__items li a {
+	display: block;
+	background: #2E3535;
+	color: #DA7071;
+	border-radius: 50%;
+	outline: none;
+	overflow: hidden;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+.menu__items li a:hover,
+.menu__items li a:focus {
+	background: #272c2c;
+	color: #777;
+}
+
+.menu__items li a span {
+	position: absolute;
+	color: transparent;
+	top: 100%;
+	pointer-events: none;
+}
+
+.morph-shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.morph-shape svg path {
+	fill: #DA7071;
+	-webkit-transition: fill 0.3s;
+	transition: fill 0.3s;
+}
+
+.menu--open .morph-shape svg path {
+	fill: #777;
+}
+
+@media screen and (max-width: 40em) {
+	.menu__items {
+		-webkit-transform: scale3d(0.8,0.8,1);
+		transform: scale3d(0.8,0.8,1);
+	}
+}

@@ -1,0 +1,79 @@
+.drag-container {
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+.drag-element {
+	width: 260px;
+	height: 260px;
+	margin: 10px;
+	position: relative;
+	float: left;
+}
+
+.drag-element:hover {
+	cursor: move;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+
+.drag-element:active,
+.drag-element.is-dragging {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
+
+.drag-element .fa {
+	display: block;
+	line-height: 260px;
+	text-align: center;
+	color: #aaa;
+	position: relative;
+	width: 100%;
+	-webkit-transition: -webkit-transform 0.1s ease-in-out;
+	transition: transform 0.1s ease-in-out;
+}
+
+.drag-element--alt .fa {
+	-webkit-transition: -webkit-transform 0.05s ease-in;
+	transition: transform 0.05s ease-in;
+}
+
+.drag-element:active .fa,
+.drag-element.is-dragging .fa {
+	-webkit-transform: scale3d(1.2, 1.2, 1);
+	transform: scale3d(1.2, 1.2, 1);
+}
+
+.morph-shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	-webkit-transition: -webkit-transform 0.1s ease-in-out;
+	transition: transform 0.1s ease-in-out;
+}
+
+.drag-element--alt .morph-shape {
+	-webkit-transition: -webkit-transform 0.05s ease-in;
+	transition: transform 0.05s ease-in;
+}
+
+.drag-element:active .morph-shape,
+.drag-element.is-dragging .morph-shape {
+	-webkit-transform: scale3d(0.88, 0.9, 1);
+	transform: scale3d(0.88, 0.9, 1);
+}
+
+.morph-shape svg path {
+	fill: #44474D;
+	-webkit-transition: fill 0.2s;
+	transition: fill 0.2s;
+}
+
+.drag-element:active .morph-shape svg path,
+.drag-element.is-dragging .morph-shape svg path {
+	fill: #484b51;
+}
+

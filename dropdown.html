@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elastic SVG Elements | Dropdown</title>
+		<meta name="description" content="Adding elasticity with SVG shape animations" />
+		<meta name="keywords" content="svg, morph, snap.svg, effect, animation, css, shape" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/dropdown.css" />
+		<script src="js/snap.svg-min.js"></script>
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="theme-3">
+		<div class="container">
+			<div class="main">
+				<header class="codrops-header">
+					<h1>Elastic SVG Elements <span>Adding elasticity with SVG shape animations</span></h1>
+					<div class="codrops-links">
+						<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/DialogEffects/" title="Previous Demo"><span>Previous Demo</span></a> / 
+						<a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21555" title="Back to the article"><span>Back to the Codrops Article</span></a>
+					</div>
+					<nav class="codrops-demos">
+						<a href="index.html">Sidebar Menu</a>
+						<a href="pullupmenu.html">Pull-Up Menu</a>
+						<a class="current-demo" href="dropdown.html">Drop-down Menu</a>
+						<a href="drag.html">Drag &amp; Drop</a>
+						<a href="collapseexpand.html">Collapse &amp; Expand</a>
+						<a href="hamburger.html">Menu Icon</a>
+						<a href="circlemenu.html">Circular Menu</a>
+						<a href="inputs.html">Inputs</a>
+						<a href="button.html">Buttons</a>
+					</nav>
+				</header>
+				<div class="content">
+					<nav id="menu" class="menu">
+						<div class="morph-shape" data-morph-open="M260,500H0c0,0,8-120,8-250C8,110,0,0,0,0h260c0,0-8,110-8,250C252,380,260,500,260,500z">
+							<svg width="100%" height="100%" viewBox="0 0 260 500" preserveAspectRatio="none">
+								<path fill="none" d="M260,500H0c0,0,0-120,0-250C0,110,0,0,0,0h260c0,0,0,110,0,250C260,380,260,500,260,500z"/>
+							</svg>
+						</div>
+						<button class="menu__label"><i class="fa fa-fw fa-bars"></i><span>Open Menu</span></button>
+						<ul class="menu__inner">
+							<li><a href="#"><i class="fa fa-fw fa-bookmark-o"></i><span>Reading List</span></a></li>
+							<li><a href="#"><i class="fa fa-fw fa-hdd-o"></i><span>Saved Items</span></a></li>
+							<li><a href="#"><i class="fa fa-fw fa-image"></i><span>All Media</span></a></li>
+							<li><a href="#"><i class="fa fa-fw fa-heart-o"></i><span>Favorites</span></a></li>
+							<li><a href="#"><i class="fa fa-fw fa-envelope-o"></i><span>Messages</span></a></li>
+							<li><a href="#"><i class="fa fa-fw fa-bell-o"></i><span>Notifications</span></a></li>
+						</ul>
+					</nav>
+				</div>
+				<!-- Related demos -->
+				<section class="related">
+					<p>If you enjoyed this demo you might also like:</p>
+					<a href="http://tympanus.net/Development/SelectInspiration/">
+						<img src="img/related/SelectInspiration.png" />
+						<h3>Custom Select Elements</h3>
+					</a>
+					<a href="http://tympanus.net/Tutorials/ShapeHoverEffectSVG/">
+						<img src="img/related/ShapeHoverEffect.png" />
+						<h3>Shape Hover Effect</h3>
+					</a>
+				</section>
+			</div><!-- /main -->
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script>
+			(function() {
+
+				function SVGDDMenu( el, options ) {
+					this.el = el;
+					this.init();
+				}
+
+				SVGDDMenu.prototype.init = function() {
+					this.shapeEl = this.el.querySelector( 'div.morph-shape' );
+
+					var s = Snap( this.shapeEl.querySelector( 'svg' ) );
+					this.pathEl = s.select( 'path' );
+					this.paths = {
+						reset : this.pathEl.attr( 'd' ),
+						open : this.shapeEl.getAttribute( 'data-morph-open' )
+					};
+
+					this.isOpen = false;
+
+					this.initEvents();
+				};
+
+				SVGDDMenu.prototype.initEvents = function() {
+					this.el.addEventListener( 'click', this.toggle.bind(this) );
+						
+					// For Demo purposes only
+					[].slice.call( this.el.querySelectorAll('a') ).forEach( function(el) {
+						el.onclick = function() { return false; }
+					} );
+				};
+
+				SVGDDMenu.prototype.toggle = function() {
+					var self = this;
+
+					if( this.isOpen ) {
+						classie.remove( self.el, 'menu--open' );
+					}
+					else {
+						classie.add( self.el, 'menu--open' );
+					}
+
+					this.pathEl.stop().animate( { 'path' : this.paths.open }, 320, mina.easeinout, function() {
+						self.pathEl.stop().animate( { 'path' : self.paths.reset }, 1000, mina.elastic );
+					} );
+
+					this.isOpen = !this.isOpen;	
+				};
+
+				new SVGDDMenu( document.getElementById( 'menu' ) );
+
+			})();
+		</script>
+	</body>
+</html>

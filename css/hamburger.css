@@ -1,0 +1,39 @@
+.menu-button {
+	width: 60px;
+	height: 80px;
+	position: relative;
+	margin: 5em auto;
+	display: block;
+	background: none;
+	outline: none;
+	border: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+.morph-shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.morph-shape svg path,
+.morph-shape svg line {
+	stroke: #DDDCD7;
+	stroke-width: 4px;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.menu-button--open .morph-shape svg path:first-of-type {
+	-webkit-transform: translate3d(0, -8px, 0);
+	transform: translate3d(0, -8px, 0);
+}
+
+.menu-button--open .morph-shape svg path:nth-of-type(2) {
+	-webkit-transform: translate3d(0, 8px, 0);
+	transform: translate3d(0, 8px, 0);
+}
+

@@ -1,0 +1,199 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,600,700);
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+body {
+	color: #fff;
+	background: #2f3238;
+	font-weight: 400;
+	font-size: 1em;
+	font-family: 'Raleway', Arial, sans-serif;
+}
+
+a {
+	color: #B24E51;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: #afb3b8;
+	outline: none;
+}
+
+.theme-2 { background: #434d55; }
+.theme-2 a { color: #4991C2; }
+.theme-2 a:hover, .theme-2 a:focus { color: #74777b; }
+
+.theme-3 { background: #e4eaea; color: #74777b;}
+.theme-3 a { color: #e35583; }
+.theme-3 a:hover, .theme-3 a:focus { color: #74777b; }
+
+.theme-4 a { color: #6EAE8C; }
+.theme-4 a:hover, .theme-4 a:focus { color: #74777b; }
+
+.theme-5 { background: #e4eaea; color: #74777b;}
+.theme-5 a { color: #EA8686; }
+.theme-5 a:hover, .theme-5 a:focus { color: #74777b; }
+
+.theme-6 a { color: #CFB75C; }
+.theme-6 a:hover, .theme-6 a:focus { color: #74777b; }
+
+.theme-7 { background: #E8E8E8; color: #FF72AD;}
+.theme-7 a { color: #415c71; }
+.theme-7 a:hover, .theme-7 a:focus { color: #509EDB; }
+
+.theme-8 a { color: #938edc; }
+
+.theme-9 { background: #3D4444; color: #DADADA;}
+.theme-9 a { color: #DA7071; }
+.theme-9 a:hover, .theme-9 a:focus { color: #74777b; }
+
+.content {
+	min-height: 250px;
+	margin: 0 auto;
+	padding-bottom: 2em;
+}
+
+.content--tiny {
+	max-width: 800px;
+}
+
+.container {
+	text-align: center;
+	padding: 5.25em 0.5em 0;
+}
+
+/* Header */
+.codrops-header {
+	padding: 0;
+	letter-spacing: -1px;
+}
+
+.codrops-header h1 {
+	font-weight: 800;
+	font-size: 3.5em;
+	line-height: 1;
+	margin: 0;
+}
+
+.codrops-header h1 span {
+	display: block;
+	font-size: 35%;
+	letter-spacing: 1px;
+	padding-top: 0.75em;
+	color: #afb3b8;
+}
+
+/* To Navigation Style */
+.codrops-links {
+	text-transform: uppercase;
+	font-weight: 300;
+	font-size: 1.25em;
+}
+
+.codrops-links a {
+	display: inline-block;
+	padding: 0.5em 0;
+	margin: 0.5em;
+	text-decoration: none;
+	letter-spacing: 1px;
+}
+
+.codrops-icon span {
+	display: none;
+}
+
+.codrops-icon:before {
+	margin: 0 4px;
+	text-transform: none;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-family: 'codropsicons';
+	line-height: 1;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.codrops-icon-drop:before {
+	content: "\e001";
+}
+
+.codrops-icon-prev:before {
+	content: "\e004";
+}
+
+/* Codrops demo links */
+.codrops-demos {
+	margin: 3em auto;
+	max-width: 700px;
+}
+
+.codrops-demos a {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 0.25em 0;
+	margin: 5px 10px;
+	display: inline-block;
+	font-size: 0.85em;
+}
+
+.codrops-demos a.current-demo {
+	opacity: 0.5;
+}
+
+/* Related demos */
+.related {
+	text-align: center;
+	padding: 10em 0;
+	clear: both;
+	font-weight: bold;
+}
+
+.related > a {
+	width: 200px;
+	display: inline-block;
+	text-align: center;
+	margin: 1em;
+	font-size: 0.8em;
+	vertical-align: top;
+}
+
+.related a img {
+	max-width: 100%;
+	opacity: 0.8;
+}
+
+.related a:hover img,
+.related a:active img {
+	opacity: 1;
+}
+
+.related a h3 {
+	margin: 0;
+	font-size: ;
+	padding: 0.5em 0 0.3em;
+	max-width: 200px;
+	text-align: left;
+}
+
+@media screen and (max-width: 30em) {
+	.codrops-header h1 {
+		font-size: 3em;
+	}
+}

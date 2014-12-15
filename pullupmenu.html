@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elastic SVG Elements | Pull-up Menu</title>
+		<meta name="description" content="Adding elasticity with SVG shape animations" />
+		<meta name="keywords" content="svg, morph, snap.svg, effect, animation, css, shape" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/pullupmenu.css" />
+		<script src="js/snap.svg-min.js"></script>
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="theme-2">
+		<div class="container">
+			<nav id="menu" class="menu">
+				<button class="menu__handle"><span>Menu</span></button>
+				<div class="menu__inner">
+					<ul>
+						<li><a href="#">Save settings</a></li>
+						<li><a href="#">Revert all changes</a></li>
+						<li><a href="#">Save as template</a></li>
+						<li><a href="#">Exit without saving</a></li>
+					</ul>
+				</div>
+				<div class="morph-shape" data-morph-open="M-10,100c0,0,44-95,290-95c232,0,290,95,290,95" data-morph-close="M-10,100c0,0,44,95,290,95c232,0,290-95,290-95">
+					<svg width="100%" height="100%" viewBox="0 0 560 200" preserveAspectRatio="none">
+						<path fill="none" d="M-10,100c0,0,44,0,290,0c232,0,290,0,290,0"/>
+					</svg>
+				</div>
+			</nav>
+			<div class="main">
+				<header class="codrops-header">
+					<h1>Elastic SVG Elements <span>Adding elasticity with SVG shape animations</span></h1>
+					<div class="codrops-links">
+						<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/DialogEffects/" title="Previous Demo"><span>Previous Demo</span></a> / 
+						<a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21555" title="Back to the article"><span>Back to the Codrops Article</span></a>
+					</div>
+					<nav class="codrops-demos">
+						<a href="index.html">Sidebar Menu</a>
+						<a class="current-demo" href="pullupmenu.html">Pull-Up Menu</a>
+						<a href="dropdown.html">Drop-down Menu</a>
+						<a href="drag.html">Drag &amp; Drop</a>
+						<a href="collapseexpand.html">Collapse &amp; Expand</a>
+						<a href="hamburger.html">Menu Icon</a>
+						<a href="circlemenu.html">Circular Menu</a>
+						<a href="inputs.html">Inputs</a>
+						<a href="button.html">Buttons</a>
+					</nav>
+				</header>
+			</div><!-- /main -->
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script>
+			(function() {
+
+				function SVGMenu( el, options ) {
+					this.el = el;
+					this.init();
+				}
+
+				SVGMenu.prototype.init = function() {
+					this.trigger = this.el.querySelector( 'button.menu__handle' );
+					this.shapeEl = this.el.querySelector( 'div.morph-shape' );
+
+					var s = Snap( this.shapeEl.querySelector( 'svg' ) );
+					this.pathEl = s.select( 'path' );
+					this.paths = {
+						reset : this.pathEl.attr( 'd' ),
+						open : this.shapeEl.getAttribute( 'data-morph-open' ),
+						close : this.shapeEl.getAttribute( 'data-morph-close' )
+					};
+
+					this.isOpen = false;
+
+					this.initEvents();
+				};
+
+				SVGMenu.prototype.initEvents = function() {
+					this.trigger.addEventListener( 'click', this.toggle.bind(this) );
+				};
+
+				SVGMenu.prototype.toggle = function() {
+					var self = this;
+
+					if( this.isOpen ) {
+						classie.remove( self.el, 'menu--anim' );
+						setTimeout( function() { classie.remove( self.el, 'menu--open' );	}, 250 );
+						
+						this.pathEl.stop().animate( { 'path' : this.paths.close }, 350, mina.easeout, function() {
+							self.pathEl.stop().animate( { 'path' : self.paths.reset }, 700, mina.elastic );
+						} );
+					}
+					else {
+						classie.add( self.el, 'menu--anim' );
+						setTimeout( function() { classie.add( self.el, 'menu--open' );	}, 250 );
+						
+						this.pathEl.stop().animate( { 'path' : this.paths.open }, 350, mina.backin, function() {
+							self.pathEl.stop().animate( { 'path' : self.paths.reset }, 700, mina.elastic );
+						} );
+					}
+					this.isOpen = !this.isOpen;
+				};
+
+				new SVGMenu( document.getElementById( 'menu' ) );
+
+			})();
+		</script>
+	</body>
+</html>

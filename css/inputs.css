@@ -1,0 +1,138 @@
+.input-container {
+	text-align: left;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.input-container--indent {
+	padding-left: 160px;
+}
+
+.input-container--space {
+	margin-top: 1em;
+}
+
+.input-label {
+	font-weight: bold;
+	display: inline-block;
+	line-height: 80px;
+	height: 60px;
+	width: 150px;
+	padding: 0 1em 0 0;
+	text-align: right;
+	color: #FF75AF;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.input-label--long {
+	float: left;
+	width: calc(100% - 50px);
+	text-align: left;
+	padding: 0 0 1em 1em;
+}
+
+.input-wrap {
+	position: relative;
+	margin: 0 auto 1em;
+	display: inline-block;
+	vertical-align: top;
+	width: 370px;
+	height: 80px;
+}
+
+.input-wrap--small {
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin: 23px 10px 0;
+}
+
+.input-wrap input[type="text"] {
+	display: block;
+	width: 94.6%;
+	height: 75%;
+	border: none;
+	position: relative;
+	background: none;
+	z-index: 100;
+	outline: none;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #aaa;
+	left: 2.7%;
+	top: 12.5%;
+	padding: 0 0.75em;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+.input-wrap input[type="checkbox"],
+.input-wrap input[type="radio"],
+.input-wrap .fa {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	opacity: 0;
+	cursor: pointer;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.input-wrap .fa {
+	z-index: 99;
+	line-height: 2;
+	color: #415c71;
+}
+
+.input-wrap input[type="checkbox"]:checked + .fa,
+.input-wrap input[type="radio"]:checked + .fa {
+	opacity: 1;
+}
+
+.morph-shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.morph-shape svg path {
+	fill: #fff;
+}
+
+.note {
+	text-align: left;
+	max-width: 600px;
+	padding: 1em 0 0.5em;
+	font-size: 1em;
+	color: #CBCBCB;
+	border-bottom: 1px solid #ddd;
+	margin: 0 auto 1em;
+}
+
+@media screen and (max-width: 60em) {
+	.input-label, .input-label--long {
+		text-align: left;
+		padding: 0;
+	}
+	.input-container--indent {
+		padding: 0;
+	}
+	.input-wrap:not(.input-wrap--small) {
+		width: 100%;
+	}
+}

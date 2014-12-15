@@ -1,0 +1,107 @@
+.box-container {
+	max-width: 840px;
+	min-height: 335px;
+	margin: 0 auto;
+	clear: both;
+}
+
+.box-container h2 {
+	text-align: left;
+	padding: 0 1.5em;
+	margin: 0;
+	color: #afb3b8;
+}
+
+.box-container--large {
+	min-height: 400px;
+}
+
+.box {
+	width: 260px;
+	height: 260px;
+	margin: 10px;
+	float: left;
+	position: relative;
+}
+
+.box--collapser {
+	-webkit-transition: -webkit-transform 0.15s, opacity 0.15s;
+	transition: transform 0.15s, opacity 0.15s;
+}
+
+.box--expander {
+	width: 25%;
+	min-width: 260px;
+	height: 260px;
+	float: none;
+	margin: 0 auto;
+	-webkit-transition: width 0.2s, height 0.2s;
+	transition: width 0.2s, height 0.2s;
+}
+
+.box--collapser.box--close {
+	opacity: 0;
+	-webkit-transform: scale3d(0,0,1);
+	transform: scale3d(0,0,1);
+}
+
+.box--expander.box--sizeup {
+	width: 100%;
+	height: 500px;
+}
+
+.trigger {
+	background: none;
+	color: #F5F5F5;
+	border: none;
+	width: 30px;
+	height: 30px;
+	line-height: 25px;
+	position: absolute;
+	right: 10%;
+	top: 10.5%;
+	outline: none;
+	padding: 0;
+	margin: 0;
+}
+
+.trigger .fa-compress,
+.box--sizeup .trigger .fa-expand {
+	display: none;
+}
+
+.box--sizeup .trigger .fa-compress {
+	display: inline-block;
+}
+
+.morph-shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	-webkit-transition: -webkit-transform 0.1s ease-in-out;
+	transition: transform 0.1s ease-in-out;
+}
+
+.drag-element--alt .morph-shape {
+	-webkit-transition: -webkit-transform 0.05s ease-in;
+	transition: transform 0.05s ease-in;
+}
+
+.morph-shape--color-1 svg path {
+	fill: #4E574B;
+}
+
+.morph-shape--color-2 svg path {
+	fill: #EA5656;
+}
+
+.morph-shape--color-3 svg path {
+	fill: #4E82E0;
+}
+
+.morph-shape--color-4 svg path {
+	fill: #71CF84;
+}
+

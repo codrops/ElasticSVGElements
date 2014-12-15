@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Elastic SVG Elements | Drag &amp; Drop</title>
+		<meta name="description" content="Adding elasticity with SVG shape animations" />
+		<meta name="keywords" content="svg, morph, snap.svg, effect, animation, css, shape" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/drag.css" />
+		<script src="js/snap.svg-min.js"></script>
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="theme-4">
+		<div class="container">
+			<div class="main">
+				<header class="codrops-header">
+					<h1>Elastic SVG Elements <span>Adding elasticity with SVG shape animations</span></h1>
+					<div class="codrops-links">
+						<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/DialogEffects/" title="Previous Demo"><span>Previous Demo</span></a> / 
+						<a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21555" title="Back to the article"><span>Back to the Codrops Article</span></a>
+					</div>
+					<nav class="codrops-demos">
+						<a href="index.html">Sidebar Menu</a>
+						<a href="pullupmenu.html">Pull-Up Menu</a>
+						<a href="dropdown.html">Drop-down Menu</a>
+						<a class="current-demo" href="drag.html">Drag &amp; Drop</a>
+						<a href="collapseexpand.html">Collapse &amp; Expand</a>
+						<a href="hamburger.html">Menu Icon</a>
+						<a href="circlemenu.html">Circular Menu</a>
+						<a href="inputs.html">Inputs</a>
+						<a href="button.html">Buttons</a>
+					</nav>
+				</header>
+				<div class="drag-container">
+					<div class="drag-element" id="drag-element-1">
+						<span id="morph-shape" class="morph-shape" data-morph-active="M273,273c0,0-55.8,24-123,24c-78.2,0-123-24-123-24S3,235.3,3,150C3,79.936,27,27,27,27S72,3,150,3
+	c85,0,123,24,123,24s24,38.43,24,123C297,229.646,273,273,273,273z">
+							<svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="none">
+								<path d="M273,273c0,0-55.8,0-123,0c-78.2,0-123,0-123,0s0-37.7,0-123c0-70.064,0-123,0-123s45,0,123,0
+	c85,0,123,0,123,0s0,38.43,0,123C273,229.646,273,273,273,273z"/>
+							</svg>
+						</span>
+						<i class="fa fa-fw fa-arrows"></i>
+					</div>
+					<div class="drag-element" id="drag-element-2">
+						<span id="morph-shape" class="morph-shape" data-morph-active="M273,273c0,0-55.8,24-123,24c-78.2,0-123-24-123-24S3,235.3,3,150C3,79.936,27,27,27,27S72,3,150,3
+	c85,0,123,24,123,24s24,38.43,24,123C297,229.646,273,273,273,273z">
+							<svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="none">
+								<path d="M273,273c0,0-55.8,0-123,0c-78.2,0-123,0-123,0s0-37.7,0-123c0-70.064,0-123,0-123s45,0,123,0
+	c85,0,123,0,123,0s0,38.43,0,123C273,229.646,273,273,273,273z"/>
+							</svg>
+						</span>
+						<i class="fa fa-fw fa-arrows"></i>
+					</div>
+					<div class="drag-element drag-element--alt" id="drag-element-3">
+						<span id="morph-shape" class="morph-shape" data-morph-active="M273,273c0,0-55.8,24-123,24c-78.2,0-123-24-123-24S3,235.3,3,150C3,79.936,27,27,27,27S72,3,150,3
+	c85,0,123,24,123,24s24,38.43,24,123C297,229.646,273,273,273,273z">
+							<svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="none">
+								<path d="M273,273c0,0-55.8,0-123,0c-78.2,0-123,0-123,0s0-37.7,0-123c0-70.064,0-123,0-123s45,0,123,0
+	c85,0,123,0,123,0s0,38.43,0,123C273,229.646,273,273,273,273z"/>
+							</svg>
+						</span>
+						<i class="fa fa-fw fa-arrows"></i>
+					</div>
+				</div>
+				<!-- Related demos -->
+				<section class="related">
+					<p>If you enjoyed this demo you might also like:</p>
+					<a href="http://tympanus.net/Development/DragDropInteractions/">
+						<img src="img/related/DragDropInteractions.png" />
+						<h3>Drag &amp; Drop Interaction Ideas</h3>
+					</a>
+					<a href="http://tympanus.net/Tutorials/ShapeHoverEffectSVG/">
+						<img src="img/related/ShapeHoverEffect.png" />
+						<h3>Shape Hover Effect</h3>
+					</a>
+				</section>
+			</div><!-- /main -->
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/draggabilly.pkgd.min.js"></script>
+		<script>
+			(function() {
+
+				var zidx = 0;
+
+				function extend( a, b ) {
+					for( var key in b ) { 
+						if( b.hasOwnProperty( key ) ) {
+							a[key] = b[key];
+						}
+					}
+					return a;
+				}
+
+				function SVGDraggable( el, options ) {
+					this.el = el;
+					this.options = extend( {}, this.options );
+					extend( this.options, options );
+					this.init();
+				}
+
+				SVGDraggable.prototype.options = {
+					speed : { reset : 100, active : 100 },
+					easing : { reset : mina.easeinout, active : mina.easeinout }
+				};
+
+				SVGDraggable.prototype.init = function() {
+					this.draggie = new Draggabilly( this.el );
+					
+					this.shapeEl = this.el.querySelector( 'span.morph-shape' );
+
+					var s = Snap( this.shapeEl.querySelector( 'svg' ) );
+					this.pathEl = s.select( 'path' );
+					this.paths = { 
+						reset : this.pathEl.attr( 'd' ),
+						active : this.shapeEl.getAttribute( 'data-morph-active' ) 
+					};
+
+					this.initEvents();
+				};
+
+				SVGDraggable.prototype.initEvents = function() {
+					var self = this;
+
+					this.draggie.on( 'dragStart', function( i, e, p ) {
+						i.element.style.zIndex = 9999;
+						self.pathEl.stop().animate( { 'path' : self.paths.active }, self.options.speed.active, self.options.easing.active );
+					} );
+
+					this.draggie.on( 'dragEnd', function( i, e, p ) {
+						// z-index workaround (this shouldn't be done like this!! just for demo purposes...)
+						++zidx;
+						i.element.style.zIndex = zidx;
+						self.pathEl.stop().animate( { 'path' : self.paths.reset }, self.options.speed.reset, self.options.easing.reset );
+					} );
+				};
+
+
+				new SVGDraggable( document.getElementById( 'drag-element-1' ) );
+
+				new SVGDraggable( document.getElementById( 'drag-element-2' ), {
+					speed : { reset : 800, active : 100 },
+					easing : { reset : mina.elastic, active : mina.easeinout }
+				} );
+
+				new SVGDraggable( document.getElementById( 'drag-element-3' ), {
+					speed : { reset : 600, active : 50 },
+					easing : { reset : mina.bounce, active : mina.easeout }
+				} );
+			})();		
+		</script>
+	</body>
+</html>
