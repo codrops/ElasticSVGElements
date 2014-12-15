@@ -5,7 +5,7 @@ Adding elasticity with SVG shape animations for enhanced UI interactions.
 
 [Article on Codrops](http://tympanus.net/codrops/?p=21555)
 
-[Demo](http://tympanus.net/Development/MorphingShapeEffects/)
+[Demo](http://tympanus.net/Development/ElasticSVGElements/)
 
 Integrate or build upon it for free in your personal or commercial projects. Don't republish, redistribute or sell "as-is". 
 
